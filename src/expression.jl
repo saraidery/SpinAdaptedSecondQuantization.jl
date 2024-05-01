@@ -81,18 +81,18 @@ but rather include a single zero term")
 
     t, rest = Iterators.peel(ex.terms)
 
-    if t.scalar < 0
-        print(io, "- ", (new_scalar(t, -t.scalar), translation))
-    else
+    # if t.scalar < 0
+    #     print(io, "- ", (new_scalar(t, -t.scalar), translation))
+    # else
         print(io, (t, translation))
-    end
+    # end
 
     for t in rest
-        if t.scalar < 0
-            print(io, "\n- ", (new_scalar(t, -t.scalar), translation))
-        else
+        # if t.scalar < 0
+        #     print(io, "\n- ", (new_scalar(t, -t.scalar), translation))
+        # else
             print(io, "\n+ ", (t, translation))
-        end
+        # end
     end
 end
 
