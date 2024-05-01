@@ -350,6 +350,7 @@ function Base.isless(a::Term, b::Term)
         length(a.tensors), tensorstrings_a,
         length(a.deltas),
         a.operators, a.sum_indices, a.tensors, a.deltas,
+        -abs(a.scalar), -sign(a.scalar),
         a.constraints,
     ) < (
         length(b.operators), operatortypes_b,
@@ -357,6 +358,7 @@ function Base.isless(a::Term, b::Term)
         length(b.tensors), tensorstrings_b,
         length(b.deltas),
         b.operators, b.sum_indices, b.tensors, b.deltas,
+        -abs(b.scalar), -sign(b.scalar),
         b.constraints,
     )
     end
