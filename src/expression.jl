@@ -80,20 +80,28 @@ but rather include a single zero term")
     end
 
     t, rest = Iterators.peel(ex.terms)
-    print("HEIEHEI")
 
-    #if t.scalar < 0
-    #    print(io, "- ", (new_scalar(t, -t.scalar), translation))
-    #else
+    if (typeof(t.scalar < 0) <: Bool)
+        if t.scalar < 0
+            print(io, "- ", (new_scalar(t, -t.scalar), translation))
+        else
+            print(io, (t, translation))
+        end
+    else
         print(io, (t, translation))
-    #end
+    end
+
 
     for t in rest
-       # if t.scalar < 0
-        #    print(io, "\n- ", (new_scalar(t, -t.scalar), translation))
-        #else
-            print(io, "\n+ ", (t, translation))
-        #end
+        if (typeof(t.scalar < 0) <: Bool)
+            if t.scalar < 0
+                print(io, "- ", (new_scalar(t, -t.scalar), translation))
+            else
+                print(io, (t, translation))
+            end
+        else
+            print(io, (t, translation))
+        end
     end
 end
 
