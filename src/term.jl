@@ -337,7 +337,6 @@ end
 
 # Exactly how to sort terms is up for debate, but it should be consistent
 function Base.isless(a::Term, b::Term)
-    if !(typeof(a.scalar)>:Num | typeof(b.scalar)>:Num)
 
     operatortypes_a = [typeof(e) for e in a.operators]
     operatortypes_b = [typeof(e) for e in b.operators]
@@ -351,7 +350,6 @@ function Base.isless(a::Term, b::Term)
         length(a.tensors), tensorstrings_a,
         length(a.deltas),
         a.operators, a.sum_indices, a.tensors, a.deltas,
-        -abs(a.scalar), -sign(a.scalar),
         a.constraints,
     ) < (
         length(b.operators), operatortypes_b,
@@ -359,7 +357,6 @@ function Base.isless(a::Term, b::Term)
         length(b.tensors), tensorstrings_b,
         length(b.deltas),
         b.operators, b.sum_indices, b.tensors, b.deltas,
-        -abs(b.scalar), -sign(b.scalar),
         b.constraints,
     )
     end
