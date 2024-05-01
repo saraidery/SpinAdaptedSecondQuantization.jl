@@ -337,9 +337,7 @@ end
 
 # Exactly how to sort terms is up for debate, but it should be consistent
 function Base.isless(a::Term, b::Term)
-    if (typeof(a.scalar)>:Num | typeof(b.scalar)>:Num)
-        return true
-    end
+    if !(typeof(a.scalar)>:Num | typeof(b.scalar)>:Num)
 
     operatortypes_a = [typeof(e) for e in a.operators]
     operatortypes_b = [typeof(e) for e in b.operators]
@@ -364,6 +362,7 @@ function Base.isless(a::Term, b::Term)
         -abs(b.scalar), -sign(b.scalar),
         b.constraints,
     )
+    end
 end
 
 function Base.:(==)(a::Term, b::Term)
